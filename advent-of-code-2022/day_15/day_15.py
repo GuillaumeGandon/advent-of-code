@@ -47,7 +47,7 @@ def solve_part_2(max_cord):
 
     diff = frame.difference(mask)
     x, y = tuple(diff.centroid.coords)[0]
-    return int(x * 4000000 + y)
+    return int(x * max_cord + y)
 
 
 print(f"Answer part one: {solve_part_1(y=2000000)}")
