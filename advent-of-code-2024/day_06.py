@@ -34,16 +34,8 @@ visited_positions = find_guard_moves()
 print(f"Answer part one: {len(visited_positions)}")
 
 obstructions = set()
-for vp, directions in visited_positions.items():
-    for d in directions.union(set((0,))):
-        next_position = vp + d
-        if (
-            next_position in map
-            and map[next_position] != "#"
-            and next_position not in obstructions
-            and next_position != start_position
-        ):
-            if find_guard_moves(obstruction=next_position) is None:
-                obstructions.add(next_position)
+for vp in visited_positions:
+    if vp not in obstructions and vp != start_position and find_guard_moves(obstruction=vp) is None:
+        obstructions.add(vp)
 
 print(f"Answer part two: {(len(obstructions))}")
