@@ -33,9 +33,5 @@ start_position = find_start_position()
 visited_positions = find_guard_moves()
 print(f"Answer part one: {len(visited_positions)}")
 
-obstructions = set()
-for vp in visited_positions:
-    if vp not in obstructions and vp != start_position and find_guard_moves(obstruction=vp) is None:
-        obstructions.add(vp)
-
-print(f"Answer part two: {(len(obstructions))}")
+del visited_positions[start_position]
+print(f"Answer part two: {sum(find_guard_moves(vp) is None for vp in visited_positions)}")
