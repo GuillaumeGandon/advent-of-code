@@ -6,12 +6,10 @@ def solve(nb_bytes):
     queue = deque(([0, 0],))
     bests = dict()
     while 1:
-
         p, nb_steps = queue.popleft()
-        if p not in bests or p in bests and nb_steps < bests[p]:
-            bests[p] = nb_steps
-        else:
+        if p in bests and nb_steps >= bests[p]:
             continue
+        bests[p] = nb_steps
 
         if p == R + R * 1j:
             return nb_steps
